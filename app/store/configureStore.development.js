@@ -6,9 +6,11 @@ import createLogger from 'redux-logger';
 import rootReducer from '../reducers';
 
 import * as counterActions from '../actions/counter';
+import * as serverActions from '../actions/server';
 
 const actionCreators = {
   ...counterActions,
+  ...serverActions,
   push,
 };
 
