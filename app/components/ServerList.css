@@ -1,0 +1,23 @@
+.container {
+  margin-top: 20px;
+}
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.textColumn {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.actionColumn {
+  width: 80px;
+  text-align: right;
+}
+.actionColumn button {
+  display: block;
+  width: 100%;
+}

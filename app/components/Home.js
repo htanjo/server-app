@@ -1,9 +1,8 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
-import Dropzone from 'react-dropzone';
+import ServerDropzone from './ServerDropzone';
+import ServerList from './ServerList';
 import styles from './Home.css';
-
-const { dialog } = require('electron').remote;
 
 class Home extends Component {
   static propTypes = {
@@ -12,38 +11,12 @@ class Home extends Component {
     servers: PropTypes.arrayOf(PropTypes.object).isRequired
   };
 
-  handleDrop = (files: Object) => {
-    const file = files && files[0];
-    if (!file || !file.path) return;
-    this.props.start(file.path);
-  }
-
-  handleClick = () => {
-    dialog.showOpenDialog({ properties: ['openFile', 'openDirectory'] }, filePaths => {
-      if (!filePaths || !filePaths[0]) return;
-      this.props.start(filePaths[0]);
-    });
-  }
-
   render() {
-    const { shutdown, servers } = this.props;
+    const { servers, start, shutdown } = this.props;
     return (
       <div className={styles.container}>
-        <h1>server-app</h1>
-        <div>
-          {servers.map(server => (
-            <div key={server.id}>
-              {server.baseDir} <button onClick={() => shutdown(server.id)}>Shutdown</button>
-            </div>
-          ))}
-        </div>
-        <div>
-          <div>
-            <Dropzone onDrop={this.handleDrop} disableClick multiple={false}>
-              <button onClick={this.handleClick}>Drop folder here</button>
-            </Dropzone>
-          </div>
-        </div>
+        <ServerDropzone start={start} />
+        <ServerList servers={servers} shutdown={shutdown} />
       </div>
     );
   }
