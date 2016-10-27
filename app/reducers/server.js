@@ -12,7 +12,7 @@ export default function server(state: Object = DEFAULT_STATE, action: Object) {
         ...state,
         servers: [
           ...state.servers,
-          { id: action.id }
+          { id: action.id, baseDir: action.baseDir }
         ]
       };
     case REMOVE_SERVER:

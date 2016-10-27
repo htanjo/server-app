@@ -1,7 +1,7 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import uniqueId from 'lodash/uniqueId';
+import Dropzone from 'react-dropzone';
 import styles from './Server.css';
 
 class Server extends Component {
@@ -11,30 +11,14 @@ class Server extends Component {
     servers: PropTypes.arrayOf(PropTypes.object).isRequired
   };
 
-  static generateId() {
-    return uniqueId('server-');
-  }
-
-  state = { baseDir: process.cwd() }
-
-  handleBaseDirChange = (event: Event) => {
-    if (event.target instanceof HTMLInputElement) {
-      this.setState({ baseDir: event.target.value });
-    }
-  }
-
-  startServer = () => {
-    const { start } = this.props;
-    const { baseDir } = this.state;
-    const options = {
-      server: { baseDir }
-    };
-    start(Server.generateId(), options);
+  handleDrop = (files: Object) => {
+    const file = files[0];
+    if (!file || !file.path) return;
+    this.props.start(file.path);
   }
 
   render() {
     const { shutdown, servers } = this.props;
-    const { baseDir } = this.state;
     return (
       <div className={styles.container}>
         <h1>Server</h1>
@@ -46,13 +30,16 @@ class Server extends Component {
         <div>
           {servers.map(server => (
             <div key={server.id}>
-              {server.id} <button onClick={() => shutdown(server.id)}>Shutdown</button>
+              {server.baseDir} <button onClick={() => shutdown(server.id)}>Shutdown</button>
             </div>
           ))}
         </div>
         <div>
-          <input className={styles.input} type="text" value={baseDir} onChange={this.handleBaseDirChange} />
-          <button onClick={this.startServer}>Create server</button>
+          <div>
+            <Dropzone onDrop={this.handleDrop} multiple={false}>
+              <div>Drop folder here</div>
+            </Dropzone>
+          </div>
         </div>
       </div>
     );
