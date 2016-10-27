@@ -4,6 +4,8 @@ import { Link } from 'react-router';
 import Dropzone from 'react-dropzone';
 import styles from './Server.css';
 
+const { dialog } = require('electron').remote;
+
 class Server extends Component {
   static propTypes = {
     start: PropTypes.func.isRequired,
@@ -12,9 +14,16 @@ class Server extends Component {
   };
 
   handleDrop = (files: Object) => {
-    const file = files[0];
+    const file = files && files[0];
     if (!file || !file.path) return;
     this.props.start(file.path);
+  }
+
+  handleClick = () => {
+    dialog.showOpenDialog({ properties: ['openFile', 'openDirectory'] }, filePaths => {
+      if (!filePaths || !filePaths[0]) return;
+      this.props.start(filePaths[0]);
+    });
   }
 
   render() {
@@ -36,8 +45,8 @@ class Server extends Component {
         </div>
         <div>
           <div>
-            <Dropzone onDrop={this.handleDrop} multiple={false}>
-              <div>Drop folder here</div>
+            <Dropzone onDrop={this.handleDrop} disableClick multiple={false}>
+              <button onClick={this.handleClick}>Drop folder here</button>
             </Dropzone>
           </div>
         </div>
