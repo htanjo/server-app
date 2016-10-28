@@ -21,8 +21,12 @@ export function createServer(filePath: string) {
       const id = uniqueId('server-');
       const bs = browserSync.create(id);
       bs.init(options, (bsErr, instance) => {
+        const settings = {
+          dirname: path.basename(baseDir),
+          baseDir
+        };
         instance.addMiddleware('', serveIndex(baseDir));
-        resolve({ id, baseDir });
+        resolve({ id, settings });
       });
     });
   });

@@ -15,8 +15,12 @@ class Home extends Component {
     const { servers, start, shutdown } = this.props;
     return (
       <div className={styles.container}>
-        <ServerDropzone start={start} />
-        <ServerList servers={servers} shutdown={shutdown} />
+        <div className={styles.side}>
+          <ServerList servers={servers} shutdown={shutdown} />
+        </div>
+        <div className={styles.main}>
+          <ServerDropzone start={start} />
+        </div>
       </div>
     );
   }

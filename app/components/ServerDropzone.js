@@ -25,7 +25,7 @@ class ServerDropzone extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.container}>
         <Dropzone
           className={styles.dropzone}
           activeClassName={styles.active}

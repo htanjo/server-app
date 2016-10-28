@@ -1,18 +1,26 @@
 .dropzone {
-  border: 2px dashed #fff;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border: 2px dashed #bbb;
+  color: #666;
 }
 
 .active {
-  background-color: rgba(0,0,0,0.2);
+  border-color: #333;
+  color: #333;
+  background-color: rgba(0,0,0,0.08);
 }
 
 .button {
   display: block;
   width: 100%;
-  height: 300px;
+  height: 100%;
   border: none;
   background: none;
   outline: none;
-  color: #fff;
+  color: inherit;
   font-size: 20px;
 }
