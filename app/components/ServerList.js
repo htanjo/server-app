@@ -14,16 +14,18 @@ class ServerList extends Component {
       !servers.length ? null :
         <div className={styles.container}>
           <table className={styles.table}>
-            {servers.map(server => (
-              <tr key={server.id}>
-                <td className={styles.textColumn}>
-                  <span title={server.baseDir}>{server.baseDir}</span>
-                </td>
-                <td className={styles.actionColumn}>
-                  <button onClick={() => shutdown(server.id)}>Shutdown</button>
-                </td>
-              </tr>
-            ))}
+            <tbody>
+              {servers.map(server => (
+                <tr key={server.id}>
+                  <td className={styles.textColumn}>
+                    <span title={server.baseDir}>{server.baseDir}</span>
+                  </td>
+                  <td className={styles.actionColumn}>
+                    <button onClick={() => shutdown(server.id)}>Shutdown</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </div>
     );
