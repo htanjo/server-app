@@ -12,10 +12,12 @@ export function createServer(filePath: string) {
       if (err) return reject(err);
       const isDirectory = stats.isDirectory();
       const baseDir = isDirectory ? filePath : path.dirname(filePath);
+      const startPath = isDirectory ? '/' : `/${path.basename(filePath)}`;
       const options = {
         server: { baseDir },
         files: [`${baseDir}/**`, '!**/node_modules/**'],
-        notify: false
+        notify: false,
+        startPath
       };
       const id = uniqueId('server-');
       const bs = browserSync.create(id);

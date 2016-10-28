@@ -33,7 +33,7 @@ class ServerDropzone extends Component {
           multiple={false}
           disableClick
         >
-          <button className={styles.button} onClick={this.handleClick}>Drop folder here</button>
+          <button className={styles.button} onClick={this.handleClick}>Drop file or folder here</button>
         </Dropzone>
       </div>
     );
