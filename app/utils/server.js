@@ -1,10 +1,9 @@
 // @flow
 import path from 'path';
 import fs from 'fs';
-import { remote } from 'electron';
+import browserSync from 'browser-sync';
+import serveIndex from 'serve-index';
 import uniqueId from 'lodash/uniqueId';
-
-const browserSync = remote.require('browser-sync');
 
 export function createServer(filePath: string) {
   return new Promise((resolve, reject) => {
@@ -21,7 +20,10 @@ export function createServer(filePath: string) {
       };
       const id = uniqueId('server-');
       const bs = browserSync.create(id);
-      bs.init(options, () => resolve({ id, baseDir }));
+      bs.init(options, (bsErr, instance) => {
+        instance.addMiddleware('', serveIndex(baseDir));
+        resolve({ id, baseDir });
+      });
     });
   });
 }
