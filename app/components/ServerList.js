@@ -11,25 +11,24 @@ class ServerList extends Component {
   render() {
     const { shutdown, servers } = this.props;
     return (
-      !servers.length
-        ? null
-        : <div className={styles.container}>
-          <h2>Servers</h2>
-          <table className={styles.table}>
-            <tbody>
-              {servers.map(server => (
-                <tr key={server.id}>
-                  <td className={styles.textColumn}>
-                    <span title={server.settings.baseDir}>{server.settings.dirname}</span>
-                  </td>
-                  <td className={styles.actionColumn}>
-                    <button onClick={() => shutdown(server.id)}>Shutdown</button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+      <div className={styles.container}>
+        <h2>Servers</h2>
+        {servers.length &&
+        <table className={styles.table}>
+          <tbody>
+            {servers.map(server => (
+              <tr key={server.id}>
+                <td className={styles.textColumn}>
+                  <span title={server.settings.baseDir}>{server.settings.dirname}</span>
+                </td>
+                <td className={styles.actionColumn}>
+                  <button onClick={() => shutdown(server.id)}>Shutdown</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>}
+      </div>
     );
   }
 }

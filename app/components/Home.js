@@ -1,5 +1,6 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
+import classNames from 'classnames';
 import ServerDropzone from './ServerDropzone';
 import ServerList from './ServerList';
 import styles from './Home.css';
@@ -13,8 +14,9 @@ class Home extends Component {
 
   render() {
     const { servers, start, shutdown } = this.props;
+    const showSide = servers && servers.length > 0;
     return (
-      <div className={styles.container}>
+      <div className={classNames(styles.container, showSide && styles.showSide)}>
         <div className={styles.side}>
           <ServerList servers={servers} shutdown={shutdown} />
         </div>

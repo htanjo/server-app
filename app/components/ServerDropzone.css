@@ -1,14 +1,14 @@
 .dropzone {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  right: 20px;
-  bottom: 20px;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
   border: 2px dashed #bbb;
   color: #666;
 }
 
-.active {
+.dropzone.active {
   border-color: #333;
   color: #333;
   background-color: rgba(0,0,0,0.08);

@@ -1,21 +1,32 @@
 .container {
-  height: 100vh;
-  display: flex;
-  align-items: stretch;
+  position: relative;
 }
 
 .main {
   position: relative;
-  flex: 1 1 auto;
+  z-index: 0;
+  height: 100vh;
   padding: 10px;
+  transition: margin 0.3s;
+}
+.showSide .main {
+  margin-left: 210px;
 }
 
 .side {
-  position: relative;
-  flex: 0 1 210px;
+  position: fixed;
+  z-index: 1;
+  width: 210px;
+  top: 0;
+  left: -210px;
+  bottom: 0;
   padding: 10px;
   border-right: 1px solid #ddd;
   background-color: #f6f6f6;
+  transition: transform 0.3s;
+}
+.showSide .side {
+  transform: translateX(100%);
 }
 
 .side h2 {
