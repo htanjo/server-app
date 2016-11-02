@@ -1,16 +1,14 @@
 // @flow
-import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import Layout from '../components/Layout';
 
-export default class App extends Component {
-  static propTypes = {
-    children: PropTypes.element.isRequired
-  };
+const mapStateToProps = (state) => ({
+  showMenu: state.servers.length > 0
+});
 
-  render() {
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    );
-  }
-}
+const mapDispatchToProps = () => ({
+});
+
+const App = connect(mapStateToProps, mapDispatchToProps)(Layout);
+
+export default App;

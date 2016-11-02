@@ -1,19 +1,60 @@
-.table {
-  width: 100%;
-  table-layout: fixed;
+.title {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 0 10px;
+  font-size: 13px;
 }
 
-.textColumn {
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.listItem {
+  display: block;
+  position: relative;
+  transition: background-color 0.1s;
+}
+.listItem:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.listItem .label {
+  display: block;
+  padding: 5px 25px 5px 10px;
   overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  color: inherit;
+  cursor: inherit;
 }
 
 .actionColumn {
-  width: 80px;
+  width: 20px;
   text-align: right;
 }
-.actionColumn button {
+
+.close {
   display: block;
-  width: 100%;
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  font-size: 14px;
+  text-align: center;
+  color: #999;
+  background: none;
+}
+.close:hover,
+.close:focus {
+  color: #fff;
+  background-color: #c66;
+  outline: none;
 }

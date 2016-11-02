@@ -1,17 +1,15 @@
 // @flow
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Home from '../components/Home';
-import * as ServerActions from '../actions/server';
+import { startServer } from '../actions/server';
 
-function mapStateToProps(state) {
-  return {
-    servers: state.server.servers
-  };
-}
+const mapStateToProps = () => ({
+});
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(ServerActions, dispatch);
-}
+const mapDispatchToProps = (dispatch) => ({
+  startServer: (filePath) => dispatch(startServer(filePath))
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+const HomePage = connect(mapStateToProps, mapDispatchToProps)(Home);
+
+export default HomePage;

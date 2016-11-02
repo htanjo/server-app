@@ -5,8 +5,8 @@ import browserSync from 'browser-sync';
 import serveIndex from 'serve-index';
 import uniqueId from 'lodash/uniqueId';
 
-export function createServer(filePath: string) {
-  return new Promise((resolve, reject) => {
+export const create = (filePath: string) => (
+  new Promise((resolve, reject) => {
     fs.stat(filePath, (err, stats) => {
       if (err) return reject(err);
       const isDirectory = stats.isDirectory();
@@ -29,13 +29,13 @@ export function createServer(filePath: string) {
         resolve({ id, settings });
       });
     });
-  });
-}
+  })
+);
 
-export function exitServer(id: string) {
-  return new Promise(resolve => {
+export const exit = (id: string) => (
+  new Promise(resolve => {
     const bs = browserSync.get(id);
     bs.exit();
     resolve();
-  });
-}
+  })
+);

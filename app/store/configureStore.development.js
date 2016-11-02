@@ -26,7 +26,7 @@ const enhancer = compose(
     noop => noop
 );
 
-export default function configureStore(initialState: Object) {
+const configureStore = (initialState: Object) => {
   const store = createStore(rootReducer, initialState, enhancer);
 
   if (window.devToolsExtension) {
@@ -40,4 +40,6 @@ export default function configureStore(initialState: Object) {
   }
 
   return store;
-}
+};
+
+export default configureStore;

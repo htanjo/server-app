@@ -1,31 +1,33 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
 import Dropzone from 'react-dropzone';
-import styles from './ServerDropzone.css';
+import styles from './Dropbox.css';
 
 const { dialog } = require('electron').remote;
 
-class ServerDropzone extends Component {
+class Dropbox extends Component {
   static propTypes = {
-    start: PropTypes.func.isRequired
+    setFilePath: PropTypes.func.isRequired
   };
 
   handleDrop = (files: Object) => {
+    const { setFilePath } = this.props;
     const file = files && files[0];
     if (!file || !file.path) return;
-    this.props.start(file.path);
+    setFilePath(file.path);
   }
 
   handleClick = () => {
+    const { setFilePath } = this.props;
     dialog.showOpenDialog({ properties: ['openFile', 'openDirectory'] }, filePaths => {
       if (!filePaths || !filePaths[0]) return;
-      this.props.start(filePaths[0]);
+      setFilePath(filePaths[0]);
     });
   }
 
   render() {
     return (
-      <div className={styles.container}>
+      <div>
         <Dropzone
           className={styles.dropzone}
           activeClassName={styles.active}
@@ -42,4 +44,4 @@ class ServerDropzone extends Component {
   }
 }
 
-export default ServerDropzone;
+export default Dropbox;

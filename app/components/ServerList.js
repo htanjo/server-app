@@ -4,31 +4,40 @@ import styles from './ServerList.css';
 
 class ServerList extends Component {
   static propTypes = {
-    shutdown: PropTypes.func.isRequired,
-    servers: PropTypes.arrayOf(PropTypes.object).isRequired
-  };
+    servers: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      settings: PropTypes.object.isRequired
+    }).isRequired).isRequired,
+    onClickClose: PropTypes.func.isRequired
+  }
+
+  getServerList = () => {
+    const { servers, onClickClose } = this.props;
+    return (
+      <ul className={styles.list}>
+        {servers.map(server => (
+          <li key={server.id} className={styles.listItem} title={server.settings.baseDir}>
+            <div className={styles.label}>
+              {server.settings.dirname}
+            </div>
+            <button className={styles.close} title="Shutdown" onClick={() => onClickClose(server.id)}>
+              &times;
+            </button>
+          </li>
+        ))}
+      </ul>
+    );
+  }
 
   render() {
-    const { shutdown, servers } = this.props;
+    const { servers } = this.props;
     return (
-      <div className={styles.container}>
-        <h2>Servers</h2>
-        {servers.length &&
-        <table className={styles.table}>
-          <tbody>
-            {servers.map(server => (
-              <tr key={server.id}>
-                <td className={styles.textColumn}>
-                  <span title={server.settings.baseDir}>{server.settings.dirname}</span>
-                </td>
-                <td className={styles.actionColumn}>
-                  <button onClick={() => shutdown(server.id)}>Shutdown</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>}
-      </div>
+      !servers.length
+        ? null
+        : <div>
+          <h2 className={styles.title}>Servers</h2>
+          {this.getServerList()}
+        </div>
     );
   }
 }

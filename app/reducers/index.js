@@ -1,10 +1,10 @@
 // @flow
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
-import server from './server';
+import servers from './servers';
 
 const rootReducer = combineReducers({
-  server,
+  servers,
   routing
 });
 

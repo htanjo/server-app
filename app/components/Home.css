@@ -1,37 +1,7 @@
-.container {
-  position: relative;
-}
-
-.main {
-  position: relative;
-  z-index: 0;
-  height: 100vh;
-  padding: 10px;
-  transition: margin 0.3s;
-}
-.showSide .main {
-  margin-left: 210px;
-}
-
-.side {
-  position: fixed;
-  z-index: 1;
-  width: 210px;
-  top: 0;
-  left: -210px;
-  bottom: 0;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-  background-color: #f6f6f6;
-  transition: transform 0.3s;
-}
-.showSide .side {
-  transform: translateX(100%);
-}
-
-.side h2 {
-  margin-top: 0;
-  margin-bottom: 5px;
-  font-size: 13px;
-  cursor: default;
+.home {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
 }
