@@ -1,5 +1,6 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import styles from './ServerList.css';
 
 class ServerList extends Component {
@@ -17,9 +18,9 @@ class ServerList extends Component {
       <ul className={styles.list}>
         {servers.map(server => (
           <li key={server.id} className={styles.listItem} title={server.settings.baseDir}>
-            <div className={styles.label}>
+            <Link to={`/servers/${server.id}`} className={styles.label}>
               {server.settings.dirname}
-            </div>
+            </Link>
             <button className={styles.close} title="Shutdown" onClick={() => onClickClose(server.id)}>
               &times;
             </button>

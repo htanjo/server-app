@@ -1,0 +1,44 @@
+.serverDetail {
+  padding: 10px;
+}
+
+.title {
+  width: 100%;
+  margin-top: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 16px;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 10px;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 3px 0;
+  text-align: left;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.table th {
+  width: 1%;
+  padding-right: 5px;
+}
+
+.table td {
+  position: relative;
+}
+
+.table td > span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -15,14 +15,12 @@ export const removeServer = (id: string) => ({
   id
 });
 
-export const startServer = (filePath: string) => (dispatch: Function) => {
+export const startServer = (filePath: string) => (dispatch: Function) =>
   serverUtils.create(filePath)
     .then((server) => dispatch(addServer(server.id, server.settings)))
     .catch();
-};
 
-export const shutdownServer = (id: string) => (dispatch: Function) => {
+export const shutdownServer = (id: string) => (dispatch: Function) =>
   serverUtils.exit(id)
     .then(dispatch(removeServer(id)))
     .catch();
-};
