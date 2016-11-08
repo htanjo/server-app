@@ -113,6 +113,7 @@
     "electron-debug": "^1.0.1",
     "font-awesome": "^4.6.3",
     "lodash": "^4.16.4",
+    "opn": "^4.0.2",
     "postcss": "^5.2.5",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",

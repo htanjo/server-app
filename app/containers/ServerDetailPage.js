@@ -11,9 +11,12 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onClickShutdown: (serverId) => dispatch(shutdownServer(serverId))
-});
+const mapDispatchToProps = (dispatch, props) => {
+  const serverId = props.routeParams.serverId;
+  return {
+    onClickShutdown: () => dispatch(shutdownServer(serverId))
+  };
+};
 
 const ServerDetailPage = connect(mapStateToProps, mapDispatchToProps)(ServerDetail);
 
