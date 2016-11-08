@@ -1,2 +1,81 @@
-.menu {
+.title {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.list {
+  margin: 0;
+  padding: 5px 0;
+  border-bottom: 1px solid #ddd;
+  list-style: none;
+}
+
+.listItem {
+  display: block;
+  position: relative;
+  transition: background-color 0.1s;
+}
+.listItem:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.label {
+  display: block;
+  padding: 5px 25px 5px 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  color: inherit;
+  cursor: inherit;
+  transition: color 0.1s, background-color 0.1s;
+}
+.label.active {
+  color: #fff;
+  background-color: #159;
+}
+
+.icon {
+  width: 14px;
+  margin-right: 4px;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.actionColumn {
+  width: 20px;
+  text-align: right;
+}
+
+.close {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 14px;
+  height: 14px;
+  margin-top: -7px;
+  line-height: 14px;
+  padding: 0;
+  border: none;
+  font-size: 14px;
+  text-align: center;
+  color: rgba(0,0,0,0.25);
+  background: none;
+  transition: transform 0.08s;
+}
+.close:hover,
+.close:focus {
+  color: #e53;
+  outline: none;
+  transform: scale(1.2);
+}
+.label.active + .close {
+  color: rgba(255,255,255,0.5);
+}
+.label.active + .close:hover,
+.label.active + .close:active {
+  color: #f85;
 }

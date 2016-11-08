@@ -1,7 +1,8 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import styles from './ServerList.css';
+import classNames from 'classnames';
+import styles from './Menu.css';
 
 class ServerList extends Component {
   static propTypes = {
@@ -18,11 +19,12 @@ class ServerList extends Component {
       <ul className={styles.list}>
         {servers.map(server => (
           <li key={server.id} className={styles.listItem} title={server.settings.baseDir}>
-            <Link to={`/servers/${server.id}`} className={styles.label}>
+            <Link to={`/servers/${server.id}`} className={styles.label} activeClassName={styles.active}>
+              <i className={classNames(styles.icon, 'fa fa-folder')} aria-hidden="true" />
               {server.settings.dirname}
             </Link>
             <button className={styles.close} title="Shutdown" onClick={() => onClickClose(server.id)}>
-              &times;
+              <i className="fa fa-ban" aria-hidden="true" />
             </button>
           </li>
         ))}
@@ -35,10 +37,7 @@ class ServerList extends Component {
     return (
       !servers.length
         ? null
-        : <div>
-          <h2 className={styles.title}>Servers</h2>
-          {this.getServerList()}
-        </div>
+        : this.getServerList()
     );
   }
 }

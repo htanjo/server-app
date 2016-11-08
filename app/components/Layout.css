@@ -4,12 +4,11 @@
 
 .menu {
   position: fixed;
-  z-index: 1;
+  z-index: 0;
   width: 210px;
   top: 0;
   left: -210px;
   bottom: 0;
-  border-right: 1px solid #ddd;
   background-color: #f6f6f6;
   transition: transform 0.3s;
 }
@@ -19,8 +18,9 @@
 
 .page {
   position: relative;
-  z-index: 0;
+  z-index: 1;
   height: 100vh;
+  box-shadow: -1px 0 1px 0 rgba(0,0,0,0.15);
   transition: margin 0.3s;
 }
 .showMenu .page {
