@@ -10,6 +10,11 @@ class Layout extends Component {
     children: PropTypes.element.isRequired
   };
 
+  componentDidMount() {
+    window.addEventListener('dragover', event => event.preventDefault(), false);
+    window.addEventListener('drop', event => event.preventDefault(), false);
+  }
+
   render() {
     const { showMenu, children } = this.props;
     return (
