@@ -1,20 +1,24 @@
 .dropzone {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px dashed #bbb;
-  color: #666;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed #ddd;
+  color: #999;
+  transition: border-color 0.4s, color 0.4s;
 }
 
 .dropzone.active {
   border-color: #333;
   color: #333;
-  background-color: rgba(0,0,0,0.08);
+}
+
+.dropzone.open {
+  color: transparent;
 }
 
 .button {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100%;
   height: 100%;
@@ -23,4 +27,75 @@
   outline: none;
   color: inherit;
   font-size: 20px;
+}
+
+.label {
+  position: relative;
+  top: 85px;
+}
+
+.icon {
+  position: absolute;
+  top: -15px;
+  left: 0;
+  right: 0;
+  bottom: 15px;
+  z-index: 0;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  transform: scale(1.2);
+}
+
+.cube {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  transform-style: preserve-3d;
+  transition: transform 0.4s 0.2s, color 0.4s 0.2s;
+}
+
+.plane {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background-color: rgba(60,90,120,0.2);
+  font-size: 60px;
+  line-height: 100px;
+  text-align: center;
+}
+
+.front {
+  transform: translateZ(50px);
+}
+.back {
+  transform: rotateX(-180deg) translateZ(50px);
+}
+.right {
+  transform: rotateY(90deg) translateZ(50px);
+}
+.left {
+  transform: rotateY(-90deg) translateZ(50px);
+}
+.top {
+  transform: rotateX(90deg) translateZ(-50px);
+  transform-origin: 0 0 -50px;
+  transition: transform 0.4s 0.4s;
+}
+.bottom {
+  transform: rotateX(-90deg) translateZ(50px);
+}
+
+.dropzone.active .cube,
+.dropzone.open .cube {
+  color: transparent;
+  transform: translateZ(-500px) rotateX(-25deg) rotateY(45deg);
+}
+.dropzone.active .top,
+.dropzone.open .top {
+  transform: rotateX(270deg) translateZ(-50px);
 }
