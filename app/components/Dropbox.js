@@ -41,7 +41,7 @@ class Dropbox extends Component {
           multiple={false}
           disableClick
         >
-          <button className={styles.button} onClick={this.handleClick}>
+          <button className={styles.button} onDoubleClick={this.handleClick}>
             <span className={styles.label}>Drop file or folder here</span>
           </button>
           <div className={styles.icon}>
