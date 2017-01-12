@@ -1,5 +1,6 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
+import { hashHistory } from 'react-router';
 import classNames from 'classnames';
 import Menu from './Menu';
 import styles from './Layout.css';
@@ -15,10 +16,15 @@ class Layout extends Component {
     window.addEventListener('drop', event => event.preventDefault(), false);
   }
 
+  handleDragEnter = () => hashHistory.push('/');
+
   render() {
     const { showMenu, children } = this.props;
     return (
-      <div className={classNames(styles.app, showMenu && styles.showMenu)}>
+      <div
+        className={classNames(styles.app, showMenu && styles.showMenu)}
+        onDragEnter={this.handleDragEnter}
+      >
         <div className={styles.menu}>
           <Menu />
         </div>
